@@ -5,7 +5,7 @@ import Edit from './components/Edit'
 
 import Register from './components/Register'
 
-import Euphoria from './assets/euphoria.mp3'
+import Euphoria from './assets/kalidescope.mp3'
 import './App.css';
 import ReactPlayer from 'react-player'
 import User from './components/User'
@@ -59,12 +59,12 @@ const App = () => {
     event.preventDefault()
     try {
       axios
-          .put('http://localhost:8000/api/useraccount/login', ({username, password}))
-          .then((response) => {
-            console.log(response.data)
-            setCurrentUser(response.data)
-            setIsAuthenticated(true)
-          })
+        .put('http://localhost:8000/api/useraccount/login', ({ username, password }))
+        .then((response) => {
+          console.log(response.data)
+          setCurrentUser(response.data)
+          setIsAuthenticated(true)
+        })
     } catch (err) {
       setErrorMessage(err)
     }
@@ -81,22 +81,22 @@ const App = () => {
 
   const getAccountInfo = () => {
     axios
-   .get('https://glacial-wave-24104.herokuapp.com/api/accounts')
-   .then(
-     (response) => setSongs(response.data),
-     (err) => console.error(err)
-   )
-   .catch((error) => console.error(error))  
+      .get('https://glacial-wave-24104.herokuapp.com/api/accounts')
+      .then(
+        (response) => setSongs(response.data),
+        (err) => console.error(err)
+      )
+      .catch((error) => console.error(error))
   }
 
   const getUser = () => {
-  axios
-    .get('https://glacial-wave-24104.herokuapp.com/api/users')
-    .then(
-      (response) => setUsers(response.data),
-      (err) => console.error(err)
-    )
-    .catch((error) => console.error(error))
+    axios
+      .get('https://glacial-wave-24104.herokuapp.com/api/users')
+      .then(
+        (response) => setUsers(response.data),
+        (err) => console.error(err)
+      )
+      .catch((error) => console.error(error))
   }
 
   useEffect(() => {
@@ -139,7 +139,7 @@ const App = () => {
   }
 
   const handleCreateAccount = (addAccountInfo) => {
-      axios.post('https://glacial-wave-24104.herokuapp.com/api/accounts', addAccountInfo)
+    axios.post('https://glacial-wave-24104.herokuapp.com/api/accounts', addAccountInfo)
       .then((response) => {
         getAccountInfo()
       })
@@ -160,25 +160,25 @@ const App = () => {
 
       {isAuthenticated ? (
         <>
-          <div className = 'navbarDiv'>
+          <div className='navbarDiv'>
             <h1>insert cool title here</h1>
-            <nav className = 'navBar'>
-              <Link className = 'link'to="/songs">Home</Link>
-              <Link className = 'link' to='/new'>Add Song</Link>
-              <Link className = 'link' to='/account'>Account Details</Link>
+            <nav className='navBar'>
+              <Link className='link' to="/songs">Home</Link>
+              <Link className='link' to='/new'>Add Song</Link>
+              <Link className='link' to='/account'>Account Details</Link>
               <Link className='link' to='/cart'>Your Cart</Link>
               <button onClick={handleLogout}>Log out</button>
             </nav>
           </div>
           <div className="wrapper">
             <Routes>
-              <Route path="/signup" element = {<Signup />}/>
-              <Route path="/songs" element={<Songs />}/>
-              <Route path="/account" element={<Account handleCreateAccount= {handleCreateAccount}/>}/>
-              <Route path="/cart" element={<Cart />}/>
-              <Route path = '/songs/:id' element = {<Show songs = {songs} handleUpdate={handleUpdate} />}/>
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/songs" element={<Songs />} />
+              <Route path="/account" element={<Account handleCreateAccount={handleCreateAccount} />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path='/songs/:id' element={<Show songs={songs} handleUpdate={handleUpdate} />} />
               <Route path="/new" element={<Add handleCreateSong={handleCreateSong} />} />
-              
+
             </Routes>
           </div>
         </>
@@ -187,38 +187,38 @@ const App = () => {
           <section className="login-box">
             <h1>Login</h1>
             <form onSubmit={handleSubmitLogin}>
-                <label htmlFor="username">Username:</label>
-                <input
-                    type="text"
-                    id="username"
-                    onChange={(e) => setUsername(e.target.value)}
-                    value={username}
-                    required
-                />
-                <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    id="password"
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={password}
-                    required
-                />
-                <button>Sign In</button>
+              <label htmlFor="username">Username:</label>
+              <input
+                type="text"
+                id="username"
+                onChange={(e) => setUsername(e.target.value)}
+                value={username}
+                required
+              />
+              <label htmlFor="password">Password:</label>
+              <input
+                type="password"
+                id="password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                required
+              />
+              <button>Sign In</button>
             </form>
             <p>
-                Need an account?<br />
-                <span className="line">
-                    <a href="/createaccount">Sign Up</a>
-                </span>
+              Need an account?<br />
+              <span className="line">
+                <a href="/createaccount">Sign Up</a>
+              </span>
             </p>
-            </section>
-            <div className="wrapper">
+          </section>
+          <div className="wrapper">
             <Routes>
               <Route path="/createaccount" component={<Signup handleCreateUser={handleCreateUser} />} />
             </Routes>
           </div>
-        </>  
-      )} 
+        </>
+      )}
     </>
   )
 }

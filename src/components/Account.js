@@ -36,11 +36,11 @@ const Account = (props) => {
             <br />
             <label htmlFor = 'favoritegenre'></label>
             <select name = 'favoritegenre' id = 'favoritegenre' value = {account.favoritegenre} onChange = {handleChange} required>
+
                 <option value='pop' id='pop'>Pop</option>
                 <option value='rock' id='rock'>Rock</option>
                 <option value='techno' id='techno'>Techno</option>
                 <option value='hiphop' id='hiphop'>Hip-hop</option>
-
 
             </select><br/><br/>
 

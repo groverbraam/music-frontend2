@@ -8,11 +8,20 @@ body {
     color: white;
     font-family: 'Mukta', sans-serif;
 }
+ a{
 
+     color: #15a9e9;
+ }
 
 .songImage {
     width: 200px;
     border-radius: 5px;
+    transition-duration: 0.4s;
+}
+
+.songImage:hover {
+    cursor: pointer;
+
 }
 
 .songContainer {
@@ -21,25 +30,31 @@ body {
     justify-content: center;
 
     gap: 10px;
-    margin-top: 3vh;
+    margin-top: 20vh;
     z-index: 999;
     background: #15a9e9;
     padding-top: 5vh;
+    padding-bottom: 10vh;
 }
 
 .songCard {
     background: white;
     color: black;
     padding: 20px;
+    transition-duration: 0.5s;
+}
+
+.songCard:hover {
+    transform: scale(1.02)
 }
 
 .navbarDiv {
-    /* position: fixed; */
+    top: 0;
+    width: 100%;
+    position: fixed;
     z-index: 999;
     background: black;
-
-    padding-bottom: 20px;
-
+    /* padding-bottom: 20px; */
 }
 
 .navBar {
@@ -52,10 +67,14 @@ body {
     padding-top: 20px;
 }
 
-.link {
+.navBar a {
     color: white;
     text-decoration: none;
+    /* font-size: 16px;
+    font-weight: 700; */
     transition-duration: 0.4s;
+    margin-bottom: 1vh;
+    font-family: 'Mukta', sans-serif;
 }
 
 .link:hover {
@@ -70,22 +89,39 @@ body {
 
 .searchInput {
   height: 30px;
-  width: 20vw;
-  border-radius: 8px;
+  width: 50vw;
+  border-radius: 5px;
   position: fixed;
   z-index: 1000;
-  bottom: 90.75vh;
-  right: 4vw;
+  bottom: 92vh;
+  right: 18vw;
   padding-left: 10px;
   font-size: 1em;
   font-weight: 500;
   font-family: 'Mukta', sans-serif;
+}
+.search-picshow {
+  height: 20px;
+  width: 20px;
+  position: fixed;
+  bottom: 92.8%;
+  right: 19vw;
+  z-index: 1000;
 }
 
 .logoName {
     display: flex;
     flex-direction: row;
     gap: 20px;
+    /* padding-top: 20px; */
+    margin-left: 10px;
+
+}
+
+.logoNameApp {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     padding-top: 20px;
     margin-left: 10px;
 }
@@ -96,7 +132,7 @@ body {
 }
 
 .logo {
-    width: min(6%, 70px);
+    width: min(8%, 70px);
 }
 
 .login-box {
@@ -188,45 +224,143 @@ body {
     text-align: center;
 }
 
-.navbarDiv {
-    /* position: fixed; */
-    z-index: 999;
-}
-
-.navBar {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    margin-left: 5vw;
-    margin-top: 3vh;
-    gap: 50px;
-}
-
-.link {
-    color: white;
-    text-decoration: none;
+.logoutButton {
+    padding: 0 10px;
+    margin-right: 3vw;
+    height: 40px;
+    align-self: center;
+    border-radius: 20px;
+    font-family: 'Mukta', sans-serif;
+    background: #15a9e9;
     transition-duration: 0.4s;
 }
 
-.link:hover {
+.logoutButton:hover {
     cursor: pointer;
-    color: red;
+    transform: scale(1.05);
+    background: white;
+}
+
+footer {
+    padding-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.footerUL {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.footerLI:hover {
+    color: #15a9e9;
+    cursor: pointer;
+}
+
+.footerLI {
+    list-style-type: none;
+}
+
+.footerDiv {
+    align-self: center;
+    text-align: center;
+}
+
+.logoFooter {
+    width: 12%;
+}
+
+.names {
+    align-self: center;
+}
+
+.addContainer {
+    margin-top: 20vh;
+    text-align: center;
+    background: #15a9e9;
+}
+
+.addSong {
+    font-size: 1.5em;
+    margin-bottom: 5vh;
+}
+
+.addFormDiv {
+    padding-top: 5vh;
+    padding-bottom: 20vh;
+}
+
+.genreMenu {
+    width: 150px;
+    height: 40px;
+    font-family: 'Mukta';
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.fileButton {
+    padding: 5px 10px;
+    margin-left: 80px;
+}
+
+.submitButton {
+    padding: 8px 20px;
+    background: white;
+    border-radius: 20px;
+    font-family: 'Mukta', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    transition-duration: 0.5s;
+    margin-top: 20px;
+}
+
+.submitButton:hover {
+    cursor: pointer;
     transform: scale(1.1);
+
 }
 
-.searchDiv {
-    position: relative;
+.showContainer {
+    background: #15a9e9;
+    margin-top: 20vh;
+    text-align: center;
+    padding-top: 5vh;
 }
 
-.searchInput {
-  height: 30px;
-  width: 20vw;
-  border-radius: 8px;
-  position: fixed;
-  z-index: 1000;
-  bottom: 90.75vh;
-  right: 4vw;
-  padding-left: 10px;
-  font-size: 1em;
-  font-weight: 600;
+.showName {
+    color: black;
+}
+
+.deleteButton {
+    padding: 1px 5px;
+    margin-left: 75%;
+    margin-top: 5px;
+    border-radius: 10px;
+    font-family: 'Mukta', sans-serif;
+    transition-duration: 0.4s;
+}
+
+.deleteButton:hover {
+    background: red;
+    cursor: pointer;
+}
+
+.accountContainer {
+    margin-top: 20vh;
+    background: #15a9e9;
+    text-align: center;
+    padding-top: 5vh;
+    padding-bottom: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 25%;
+}
+
+.accountForm {
+    display: flex;
+    flex-direction: column;
 }

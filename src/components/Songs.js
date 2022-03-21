@@ -93,6 +93,7 @@ const Songs = (props) => {
                     e.preventDefault(); setFilter(e.target.value);
                 }}
                 ></input>
+                <img className='search-picshow' src='https://www.freeiconspng.com/thumbs/magnifying-glass-icon/magnifying-glass-icon-13.png'></img>
 
             </div>
 

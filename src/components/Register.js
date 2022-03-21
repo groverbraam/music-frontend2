@@ -4,12 +4,12 @@ const Register = (props) => {
     let emptyUser = { name: '', email: '', username: '', password: '' }
     let emptyAccount = { owner:'' }
     const [newUser, setNewUser] = useState(emptyUser)
-    const [newAccount, setNewAccount] = useState(emptyAccount)
+     const [newAccount, setNewAccount] = useState(emptyAccount)
 
 
     const handleChange = (event) => {
         setNewUser({ ...newUser, [event.target.name]: event.target.value })
-        setNewAccount({ owner: newUser })
+        // setNewAccount({ owner: newUser })
         //console.log(newAccount)
     }
 
@@ -17,7 +17,7 @@ const Register = (props) => {
         event.preventDefault()
         //account should be created with new user
         props.handleCreateUser(newUser)
-        props.handleCreateAccount(newAccount)
+        // props.handleCreateAccount(newAccount)
     }
 
     return (
@@ -76,9 +76,7 @@ const Register = (props) => {
               </section>
         </>
     )
-              
+
 }
 
 export default Register
-
-

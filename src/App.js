@@ -28,6 +28,7 @@ import {
 } from "react-router-dom";
 
 
+
 const App = (props) => {
 
   const [songs, setSongs] = useState([])
@@ -41,6 +42,7 @@ const App = (props) => {
   const [errorMessage, setErrorMessage] = useState('')
   const [toggleLogout, setToggleLogout] = useState(false)
   const [currentUser, setCurrentUser] = useState({})
+  const [currentAccount, setCurrentAccount] = useState({})
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [toggleSignUp, setToggleSignUp] = useState(false)
 
@@ -128,24 +130,34 @@ const App = (props) => {
         getSong()
       })
   }
-  const handleCreateUser = (addUser) => {
+
+  const handleCreateUser = async (addUser) => {
     axios
       .post('https://glacial-wave-24104.herokuapp.com/api/useraccount', addUser)
       .then((response) => {
         console.log(response.data)
         setCurrentUser(response.data)
         setIsAuthenticated(true)
-        //getUser()
+        handleCreateAccount(currentUser)
       })
       .catch((error) => console.log(error))
   }
 
 
   const handleCreateAccount = (newAccount) => {
-    axios.post('https://glacial-wave-24104.herokuapp.com/api/accounts', newAccount)
+    axios({
+      method: 'post',
+      url: 'https://glacial-wave-24104.herokuapp.com/api/accounts',
+      data: {
+        owner: newAccount
+      }
+    })
       .then((response) => {
-        console.log(response.data)
-        getAccountInfo()
+        if (response.data.owner) {
+          console.log(response.data)
+        } else {
+          console.log(response.data)
+        }
       })
   }
 
@@ -163,23 +175,27 @@ const App = (props) => {
       {isAuthenticated ? (
         <>
           <div className='navbarDiv'>
-            <div className='logoName'>
-              <img className='logo' src='https://i.imgur.com/bZRUMGT.png'></img>
-              <div className='appName'>Music App</div>
+            <div className='logoNameApp'>
+              <div className='logoName'>
+                <img className='logo' src='https://i.imgur.com/bZRUMGT.png'></img>
+                <div className='appName'>Music App</div>
+              </div>
+              <button className='logoutButton' onClick={handleLogout}>Log out</button>
             </div>
             <nav className='navBar'>
               <Link className='link' to="/">Home</Link>
               <Link className='link' to='/new'>Add Song</Link>
               <Link className='link' to='/account'>Account Details</Link>
               <Link className='link' to='/cart'>Your Cart</Link>
-              <button onClick={handleLogout}>Log out</button>
+
             </nav>
           </div>
 
           <div className="wrapper">
             <Routes>
+
               <Route path="/*" element={<Songs />} />
-              <Route path="/account" element={<Account handleCreateAccount={handleCreateAccount} />} />
+              <Route path="/account" element={<Account currentUser={currentUser} handleCreateAccount={handleCreateAccount} />} />
               <Route path="/cart" element={<Cart />} />
               <Route path='/songs/:id' element={<Show songs={songs} handleDelete={handleDelete} />} />
 
@@ -187,6 +203,24 @@ const App = (props) => {
               <Route path="/edit" element={<Edit handleUpdateSong={handleUpdateSong} />} />
               <Route path="/new" element={<Add handleCreateSong={handleCreateSong} />} />
             </Routes>
+
+            <footer>
+              <ul className='footerUL'>
+
+                <li className='footerLI'>About</li>
+                <li className='footerLI'>Legal Terms</li>
+                <li className='footerLI'>Privacy Statement</li>
+                <li className='footerLI'>Careers</li>
+                <li className='footerLI'>Customer Support</li>
+              </ul>
+              <div className='footerDiv'>
+                <img className='logoFooter' src='https://i.imgur.com/bZRUMGT.png'></img>
+                <div className='footerName'>Music App</div>
+              </div>
+              <div className='names'>Made by <a href='https://www.linkedin.com/in/meredith-bloom/'>Meredith Bloom</a>, <a href='https://www.linkedin.com/in/christophermaleakethompson/'> Christopher Thompson</a>, and <a href='https://www.linkedin.com/in/lilychen910'> Lily Chen</a></div>
+
+
+            </footer>
           </div>
         </>
       ) : (
@@ -202,6 +236,7 @@ const App = (props) => {
           ) : (
             <>
               <Register handleCreateUser={handleCreateUser} handleCreateAccount={handleCreateAccount} />
+
               <div className='needAccount'>
                 <span>Have an account already?</span><br />
                 <div className='signupDiv' onClick={handleToggleSignUp}>Login</div>
@@ -218,4 +253,3 @@ const App = (props) => {
 
 
 export default App;
-

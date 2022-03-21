@@ -46,29 +46,26 @@ const Show = (props) => {
         setSongs(response.data))
       }, []);
 
-
-    if (!songs.image) {
-        songs.image = 'https://i.imgur.com/D3aOVsJ.png'
-    }
-    if (!songs.price) {
-        songs.price = '1.29'
-    }
-        return (
-          <>
-          <h1>song details {params.id}</h1>
-          <h2>{songs.name}</h2>
-          <h2>{songs.artist}</h2>
-          <h2>{songs.genre}</h2>
-          <img src = {songs.image}></img>
+if (!songs.image) {
+    songs.image = 'https://i.imgur.com/D3aOVsJ.png'
+}
+if (!songs.price) {
+    songs.price = '1.29'
+}
+    return (
+        <div className = 'showContainer'>
+        <img src = {songs.image}></img>
+        <h2 className = 'showName'>{songs.name}</h2>
+        <h3>{songs.artist}</h3>
+        <h3>{songs.genre}</h3>
 
 
-          <Link to = '/songs'><button className = 'deleteButton' onClick={handleDelete} value={songs.id}>
-          Delete
-          </button></Link>
+        <Link to = '/songs'><button className = 'deleteButton' onClick={handleDelete} value={songs.id}>
+        Delete
+        </button></Link>
 
-          <Edit handleUpdate = {handleUpdate} songs = {songs} setSongs = {setSongs} />
-
-        </>
+        <Edit handleUpdate = {handleUpdate} songs = {songs} setSongs = {setSongs} />
+        </div>
     )
 }
 

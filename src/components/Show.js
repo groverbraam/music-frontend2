@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Edit from './Edit.js'
 import ReactPlayer from 'react-player/lazy'
-import Euphoria from '../assets/kalidescope.mp3'
+
 
 import {
   Link,
@@ -65,9 +65,11 @@ const Show = (props) => {
           id='react-player'
           url={songs.audio}
           controls={true}
+          width={100}
+          height={100}
         />
       </div>
-      {console.log(Euphoria)}
+      {console.log(songs.audio)}
 
       <div className='showButtons'>
         <Link className='linkButton' to='/songs'><button className='deleteButtonShow' onClick={handleDelete} value={songs.id}>

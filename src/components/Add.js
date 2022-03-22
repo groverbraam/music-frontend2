@@ -18,45 +18,45 @@ const Add = (props) => {
   const [song, setSong] = useState(emptySong)
 
   return (
-      <div className = 'addContainer'>
+    <div className='addContainer'>
 
       <div className='addFormDiv'>
-      <h3 className = 'addSong'>Add Song</h3>
+        <h3 className='addSong'>Add Song</h3>
 
 
-      <form className = 'addForm' onSubmit={handleSubmit}>
-        <label htmlFor="name">Name: </label><br/>
-        <input className='loginInput' type="text" name="name" value={song.name} onChange={handleChange} placeholder='Enter song name...' />
-        <br/>
-        <label htmlFor="artist">Artist: </label><br/>
-        <input className='loginInput' type="text" name="artist" value={song.artist} onChange={handleChange} placeholder='Enter the artist...' />
-        <br />        <label htmlFor="image">Image URL: </label><br/>
-        <input className='loginInput' type="text" name="image" value={song.image} onChange={handleChange} placeholder='Enter the image URL...' />
-        <br />
+        <form className='addForm' onSubmit={handleSubmit}>
+          <label htmlFor="name">Name: </label><br />
+          <input className='loginInput' type="text" name="name" value={song.name} onChange={handleChange} placeholder='Enter song name...' />
+          <br />
+          <label htmlFor="artist">Artist: </label><br />
+          <input className='loginInput' type="text" name="artist" value={song.artist} onChange={handleChange} placeholder='Enter the artist...' />
+          <br />        <label htmlFor="image">Image URL: </label><br />
+          <input className='loginInput' type="text" name="image" value={song.image} onChange={handleChange} placeholder='Enter the image URL...' />
+          <br />
 
-        <label htmlFor="price">Price: </label><br/>
-        <input className = 'loginInput' type="text" name="price" value={song.price} onChange={handleChange} placeholder = 'Enter the price...'/>
-        <br />
-        <label htmlFor = 'genre'>Genre: </label><br/>
-        <select className = 'genreMenu' name = 'genre' id = 'genre' value = {song.genre} onChange = {handleChange} required>
-        <option value='pop' id='pop'>Pop</option>
-     <option value='rock' id='rock'>Rock</option>
-     <option value='techno' id='techno'>Techno</option>
-     <option value='hiphop' id='hiphop'>Hip-hop</option>
-        </select>
-        <br />
-        <br />
+          <label htmlFor="price">Price: </label><br />
+          <input className='loginInput' type="text" name="price" value={song.price} onChange={handleChange} placeholder='Enter the price...' />
+          <br />
+          <label htmlFor='genre'>Genre: </label><br />
+          <select className='genreMenu' name='genre' id='genre' value={song.genre} onChange={handleChange} required>
+            <option value='pop' id='pop'>Pop</option>
+            <option value='rock' id='rock'>Rock</option>
+            <option value='techno' id='techno'>Techno</option>
+            <option value='hiphop' id='hiphop'>Hip-hop</option>
+          </select>
+          <br />
+          <br />
 
-        <label htmlFor="audio">Audio file: </label><br/>
-        <input className = 'fileButton' type="file" id="audio" name="audio" accept="audio/*"></input>
+          <label htmlFor="audio">Audio file: </label><br />
+          <input className='fileButton' type="text" id="audio"></input>
 
 
-        <br />
-        <br />
+          <br />
+          <br />
 
-        <input className='submitButton' type="submit" />
-      </form>
-    </div>
+          <input className='submitButton' type="submit" />
+        </form>
+      </div>
     </div>
   )
 }
